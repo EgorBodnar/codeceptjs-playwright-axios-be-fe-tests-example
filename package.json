@@ -1,0 +1,60 @@
+{
+  "name": "coinshift_example_demo_testing_framework",
+  "version": "1.0.0",
+  "description": "An example of scalable and easily extensible REST API and FE UI tests",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "unit:test": "jest unit-test --coverage",
+    "allure:clean": "rm -rf output",
+    "allure:open": "allure serve output",
+    "test:ui:e2e": "codeceptjs run-workers 5 --tests -o '{\"tests\":\"test/ui/**/*.test.ts\"}'",
+    "test:ui:layout": "----",
+    "test:api": "codeceptjs run-workers 5 --tests -o '{\"tests\":\"test/api/**/*.test.ts\",\"helpers\":{\"Playwright\":{\"manualStart\":true}}}'",
+    "test:api:load": "----",
+    "test:debug": "yarn allure:clear ; codeceptjs run --grep '(?=.*@debug)' --debug --verbose --debug-brk ; yarn allure:open",
+    "ci:test": "cross-env yarn test:api --grep \\(\\?\\=\\.\\*\\@$TESTING_TYPE\\) ; yarn test:ui:e2e --grep \\(\\?\\=\\.\\*\\@$TESTING_TYPE\\)"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "dotenv-safe": "^8.2.0",
+    "expect": "^27.2.4",
+    "codeceptjs": "^3.4.1",
+    "@codeceptjs/helper": "^2.0.1",
+    "playwright": "^1.32.1",
+    "lodash": "^4.17.17",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@codeceptjs/allure-legacy": "^1.0.2",
+    "@types/jest": "^27.0.2",
+    "@types/lodash": "^4.14.176",
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "allure-commandline": "^2.17.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-codeceptjs": "^1.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.0.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0",
+    "ts-jest": "^27.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run unit:test"
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
