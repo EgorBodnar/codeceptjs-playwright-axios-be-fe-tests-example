@@ -16,7 +16,7 @@ ___
  ------------------------------------------------------------------------
 |                               Architecture                             |
 |-----------------|---------------|------------|-------------|-----------|
-| REST API Testing|WEB UI driver  | Execution  | Assertion   | Reporting |
+| REST API Testing| WEB UI driver | Execution  | Assertion   | Reporting |
 |-----------------|---------------|------------|-------------|-----------|
 |                 |               |            |             |           |
 | Axios           | Playwright    | Codeceptjs | Jest Expect | Allure    |
