@@ -46,7 +46,7 @@ ___
 ```yarn test:ui:e2e```
 
 **to run API tests locally**
-```test:api```
+```yarn test:api```
 
 **to open Allure report after test run**
 ```yarn run allure:open```
